@@ -18,7 +18,6 @@ public:
 	bool operator==(const Basic2D&);
 	bool operator!=(const Basic2D&);
 
-	//void operator*(const int&);
 };
 template <typename T>
 Basic2D<T>::Basic2D() {
@@ -83,9 +82,4 @@ bool Basic2D<T>::operator!=(const Basic2D& pos) {
 	return true;
 }
 
-//template <typename T>
-//void Basic2D<T>::operator*(const int& value) {
-	//x *= value;
-	//y *= value;
-//}
 
