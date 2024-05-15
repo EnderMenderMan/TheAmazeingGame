@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Debugging Classes&#xD;&#xA;(Not used in the game)">
-    <Position X="14.313" Y="2.489" Height="0.486" Width="1.7" />
+    <Position X="15.303" Y="2.395" Height="0.486" Width="1.7" />
   </Comment>
   <Class Name="Basic2D&lt;T&gt;" Collapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
@@ -11,49 +11,49 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Direction" Collapsed="true">
-    <Position X="11" Y="1.75" Width="1.5" />
+    <Position X="12.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Direction.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Maze&lt;sizeX, sizeY&gt;" Collapsed="true">
-    <Position X="8.75" Y="4.75" Width="1.5" />
+    <Position X="7.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAEAAAAAAICABQAAAAKAAgQAGMgAgAAAAAogCAA=</HashCode>
       <FileName>Maze.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MazeChecks" Collapsed="true">
-    <Position X="8.75" Y="3.5" Width="1.5" />
+    <Position X="7.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>MazeChecks.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Player" Collapsed="true">
-    <Position X="10.75" Y="3.5" Width="1.5" />
+    <Position X="12.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABIAAAgAAAAAgAAAAAAAAIAAAAAAEACABAAAAQIAAAI=</HashCode>
       <FileName>Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Position" Collapsed="true">
-    <Position X="8.75" Y="1.75" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Position.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TheAmazingGame" Collapsed="true">
-    <Position X="10.75" Y="4.75" Width="1.5" />
+    <Position X="10" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAIAAAAAAAAAAAACIAEAAABAACAAFgAAAgAAAAAA=</HashCode>
       <FileName>TheAmazingGame.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BitFunctions" Collapsed="true">
-    <Position X="14.5" Y="3" Width="1.5" />
+  <Class Name="BitFunctions">
+    <Position X="15.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BitFunctions.h</FileName>

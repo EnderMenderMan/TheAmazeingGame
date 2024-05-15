@@ -34,7 +34,6 @@ void Player::WritePlayer() {
 void Player::Checks(int x, int y) {
 	Direction dir(x, y);
 	Position tempPos = pos + dir;
-	//std::cout << "{ "<< tempPos.x<<", "<< tempPos.y<<" }";
 
 	if (mChecks.IsGoalAt(tempPos)) {
 		isInGoal = true;
