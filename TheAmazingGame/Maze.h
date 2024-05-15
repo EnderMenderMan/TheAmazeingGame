@@ -12,14 +12,14 @@ public:
 	void ClearMaze();
 	void GenerateMaze();
 	void WriteMaze();
-	void AddWall(Position pos);
-	void AddWall(unsigned int x, unsigned int y);
-	void RemoveWall(Position pos);
-	void RemoveWall(unsigned int x, unsigned int y);
-	bool WallExitAt(Position pos);
-	bool WallExitAt(unsigned int x, unsigned int y);
-	bool IsGoalAt(Position pos);
-	bool IsGoalAt(unsigned int x, unsigned int y);
+	void AddWall(const Position pos);
+	void AddWall(const unsigned int x, const unsigned int y);
+	void RemoveWall(const Position pos);
+	void RemoveWall(const unsigned int x, const unsigned int y);
+	bool WallExitAt(const Position pos);
+	bool WallExitAt(const unsigned int x,const unsigned int y);
+	bool IsGoalAt(const Position pos);
+	bool IsGoalAt(const unsigned int x, const unsigned int y);
 	// Symbols
 	char floorSym = ' ';
 	char wallSym = 219;
@@ -29,16 +29,21 @@ private:
 	Position snakePath[sizeX * sizeY]; // used for remembering where walls has been removed so it can walk back
 	unsigned int finalPathLength;
 
-	unsigned int bytesLength = sizeX / 8 + (bool)(sizeX % 8);
-	short finalByteLength = sizeX % 8;
-	unsigned char bytes[sizeX / 8 + (bool)(sizeX % 8)][sizeY]; // muliy array for wall/emty
+	const unsigned int bytesLength = sizeX / 8 + (bool)(sizeX % 8);
+	const short finalByteLength = sizeX % 8;
 
+	unsigned char bytes[sizeX / 8 + (bool)(sizeX % 8)][sizeY]; // storage of were walls and floors are at
+
+	// direction for snake/maze generation algorithm
 	void ResetDir(unsigned char&);
 	unsigned char GetDir(unsigned char&);
-	void IsInsideMaze(unsigned int &x, unsigned int &y, const char* sendErrorMassage);
-	void IsInsideMaze(Position& pos, const char* sendErrorMassage);
-	bool IsInsideMaze(unsigned int& x, unsigned int& y);
-	bool IsInsideMaze(Position& pos);
+
+	// inside bounds error checks
+	void IsInsideMaze(const unsigned int &x,const unsigned int &y, const char* sendErrorMassage);
+	void IsInsideMaze(const Position& pos, const char* sendErrorMassage);
+	// ignore outside bounds
+	bool IsInsideMaze(const unsigned int& x,const unsigned int& y);
+	bool IsInsideMaze(const Position& pos);
 };
 
 template <unsigned int sizeX, unsigned int sizeY>
@@ -88,9 +93,10 @@ void Maze<sizeX, sizeY>::GenerateMaze() {
 		{
 			break;
 		}
+
 		switch (GetDir(dir))
 		{
-		case 0:
+		case 0: // if no direction left walk back a step and try again
 			ResetDir(dir);
 			pathIndex--;
 			snakePos = snakePath[pathIndex];
@@ -111,6 +117,7 @@ void Maze<sizeX, sizeY>::GenerateMaze() {
 			break;
 		}
 		
+		// Check if direction is valid for path, if not try again with a diffrent direction
 		unsigned char checkMidle = 0;
 		if (moveDir.y != 0)
 		{
@@ -270,31 +277,31 @@ void Maze<sizeX, sizeY>::WriteMaze() {
 }
 
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::AddWall(Position pos) {
+void Maze<sizeX, sizeY>::AddWall(const Position pos) {
 	IsInsideMaze(pos,"Tryed to add wall out side bounds of maze");
 	if (!(bytes[pos.x >> 3][pos.y] & 1 << pos.x % 8))
 		bytes[pos.x >> 3][pos.y] += 1 << pos.x % 8;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::AddWall(unsigned int x, unsigned y) {
+void Maze<sizeX, sizeY>::AddWall(const unsigned int x,const unsigned y) {
 	IsInsideMaze(x,y, "Tryed to add wall out side bounds of maze v2");
 	if (!(bytes[x >> 3][y] & 1 << x % 8) && IsInsideMaze(x,y))
 		bytes[x >> 3][y] += 1 << x % 8;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::RemoveWall(Position pos) {
+void Maze<sizeX, sizeY>::RemoveWall(const Position pos) {
 	IsInsideMaze(pos, "Tryed to remove wall out side bounds of maze");
 	if (bytes[pos.x >> 3][pos.y] & 1 << pos.x % 8)
 		bytes[pos.x >> 3][pos.y] -= 1 << pos.x % 8;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::RemoveWall(unsigned int x, unsigned y) {
+void Maze<sizeX, sizeY>::RemoveWall(const unsigned int x,const unsigned y) {
 	IsInsideMaze(x, y, "Tryed to remove wall out side bounds of maze v2");
 	if (bytes[x >> 3][y] & 1 << x % 8)
 		bytes[x >> 3][y] -= 1 << x % 8;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::WallExitAt(Position pos) {
+bool Maze<sizeX, sizeY>::WallExitAt(const Position pos) {
 	if (!IsInsideMaze(pos))
 		return true;
 	else if (bytes[pos.x >> 3][pos.y] & 1 << pos.x % 8)
@@ -303,7 +310,7 @@ bool Maze<sizeX, sizeY>::WallExitAt(Position pos) {
 		return false;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::WallExitAt(unsigned int x, unsigned y) {
+bool Maze<sizeX, sizeY>::WallExitAt(const unsigned int x,const unsigned y) {
 	if (!IsInsideMaze(x,y))
 		return true;
 	else if (bytes[x >> 3][y] & 1 << x % 8)
@@ -312,14 +319,14 @@ bool Maze<sizeX, sizeY>::WallExitAt(unsigned int x, unsigned y) {
 		return false;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::IsGoalAt(Position pos) {
+bool Maze<sizeX, sizeY>::IsGoalAt(const Position pos) {
 	if (pos == snakePath[finalPathLength])
 		return true;
 	else
 		return false;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::IsGoalAt(unsigned int x, unsigned y) {
+bool Maze<sizeX, sizeY>::IsGoalAt(const unsigned int x,const unsigned y) {
 	if (snakePath[finalPathLength].x == x && snakePath[finalPathLength].y == y)
 		return true;
 	else
@@ -358,7 +365,7 @@ unsigned char Maze<sizeX, sizeY>::GetDir(unsigned char& dir) {
 	return 0;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::IsInsideMaze(unsigned int &x, unsigned int &y, const char* massage) {
+void Maze<sizeX, sizeY>::IsInsideMaze(const unsigned int &x,const unsigned int &y, const char* massage) {
 	if (x < 0 || x >= sizeX || y < 0 || y >= sizeY)
 	{
 		std::cerr << massage;
@@ -366,7 +373,7 @@ void Maze<sizeX, sizeY>::IsInsideMaze(unsigned int &x, unsigned int &y, const ch
 	}
 }
 template <unsigned int sizeX, unsigned int sizeY>
-void Maze<sizeX, sizeY>::IsInsideMaze(Position &pos, const char* massage) {
+void Maze<sizeX, sizeY>::IsInsideMaze(const Position &pos, const char* massage) {
 	if (pos.x < 0 || pos.x >= sizeX || pos.y < 0 || pos.y >= sizeY)
 	{
 		std::cerr << massage;
@@ -374,14 +381,14 @@ void Maze<sizeX, sizeY>::IsInsideMaze(Position &pos, const char* massage) {
 	}
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::IsInsideMaze(unsigned int& x, unsigned int& y) {
+bool Maze<sizeX, sizeY>::IsInsideMaze(const unsigned int& x,const unsigned int& y) {
 	if (x < 0 || x >= sizeX || y < 0 || y >= sizeY)
 		return false;
 	else
 		return true;
 }
 template <unsigned int sizeX, unsigned int sizeY>
-bool Maze<sizeX, sizeY>::IsInsideMaze(Position& pos) {
+bool Maze<sizeX, sizeY>::IsInsideMaze(const Position& pos) {
 	if (pos.x < 0 || pos.x >= sizeX || pos.y < 0 || pos.y >= sizeY)
 		return false;
 	else

@@ -18,6 +18,8 @@ public:
 	bool operator==(const Basic2D&);
 	bool operator!=(const Basic2D&);
 
+	bool operator==(const Basic2D&) const;
+	bool operator!=(const Basic2D&) const;
 };
 template <typename T>
 Basic2D<T>::Basic2D() {
@@ -77,6 +79,19 @@ bool Basic2D<T>::operator==(const Basic2D& pos) {
 }
 template <typename T>
 bool Basic2D<T>::operator!=(const Basic2D& pos) {
+	if (x == pos.x && y == pos.y)
+		return false;
+	return true;
+}
+
+template <typename T>
+bool Basic2D<T>::operator==(const Basic2D& pos) const {
+	if (x == pos.x && y == pos.y)
+		return true;
+	return false;
+}
+template <typename T>
+bool Basic2D<T>::operator!=(const Basic2D& pos) const {
 	if (x == pos.x && y == pos.y)
 		return false;
 	return true;
