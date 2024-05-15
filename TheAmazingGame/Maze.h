@@ -1,5 +1,4 @@
 #pragma once
-#include "BitFunctions.h"
 #include "MazeChecks.h"
 #include "Direction.h"
 #include <Windows.h>

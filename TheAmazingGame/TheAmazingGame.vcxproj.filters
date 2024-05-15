@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Save.txt" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
