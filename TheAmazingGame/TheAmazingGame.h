@@ -7,7 +7,6 @@ public:
 	TheAmazingGame();
 	void Save();
 	void Play();
-	unsigned int GetScore();
 private:
 	void Uppdate();
 	void MazeFinished();

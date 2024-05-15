@@ -38,9 +38,6 @@ void TheAmazingGame::Play() {
 		Sleep(50);
 	}
 }
-unsigned int TheAmazingGame::GetScore() {
-	return score;
-}
 void TheAmazingGame::Uppdate() {
 	if (GetKeyState(VK_ESCAPE) < 0)
 	{
