@@ -11,42 +11,42 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Direction" Collapsed="true">
-    <Position X="12.25" Y="0.5" Width="1.5" />
+    <Position X="12" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Direction.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Maze&lt;sizeX, sizeY&gt;">
-    <Position X="7.75" Y="4.75" Width="1.5" />
+  <Class Name="Maze&lt;sizeX, sizeY&gt;" Collapsed="true">
+    <Position X="7.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAEAAAAAAICABQAAAAKAAgQAGMgAgAAAAAogCAA=</HashCode>
       <FileName>Maze.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MazeChecks">
-    <Position X="7.75" Y="2.5" Width="1.5" />
+  <Class Name="MazeChecks" Collapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>MazeChecks.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Player">
-    <Position X="12.25" Y="2.5" Width="1.5" />
+  <Class Name="Player" Collapsed="true">
+    <Position X="10" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABIAAAgAAAAAgAAAAAAAAIAAAAAAEACABAAAAQIAAAI=</HashCode>
       <FileName>Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Position" Collapsed="true">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Position.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TheAmazingGame">
-    <Position X="10" Y="4.75" Width="1.5" />
+  <Class Name="TheAmazingGame" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAIAAAAAAAAAAAACIAEAAABAACAAFgAAAgAAAAAA=</HashCode>
       <FileName>TheAmazingGame.h</FileName>
